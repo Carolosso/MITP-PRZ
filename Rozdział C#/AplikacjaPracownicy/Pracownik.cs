@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -46,8 +46,10 @@ namespace AplikacjaPracownicy
         //bezargumentowy konstruktor domyslny
         public Pracownik() 
         {
-            new Data();
-            new Adres();
+            dataUrodzenia = new Data();
+            adresZamieszkania = new Adres();
+            imie = "";
+            nazwisko = "";
         }
         //konstruktor inicjalizujacy wszystkie pola składowe na podstawie odp dobranych arg
         public Pracownik(string imie, string nazwisko, Data dataUrodzenia, Adres adresZamieszkania)
