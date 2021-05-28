@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,12 +16,12 @@ namespace AplikacjaPracownicy
         }
         public int Rozmiar
         {
-            get { return lista.Count; }
+            get { return lista.Capacity; }
         }
         //bezargumentowy konstruktor domyslny
         public Lista()
         {
-            Lista lista = new Lista();
+             lista = new List<Pracownik>();
         }
         //void Dodaj(Pracownik pracownik) dodającą pracownika do listy pracowników.
         public void Dodaj(Pracownik pracownik)
@@ -36,10 +36,11 @@ namespace AplikacjaPracownicy
         //int Usun(string nazwisko)
         public int Usun(string nazwisko)
         {
-            for (int i = 0; i < lista.Count; i++)
+            for (int i = 0; i < Rozmiar; i++)
             {
                 if (lista[i].Nazwisko.Equals(nazwisko))
                 {
+                    lista.Remove(lista[i]);
                     return i;
                 }
             }
@@ -48,7 +49,7 @@ namespace AplikacjaPracownicy
         //void Usun(int indeks)
         public void Usun(int indeks)
         {
-            if (indeks >= 0 && indeks < lista.Count)
+            if (indeks >= 0 && indeks < Rozmiar)
             {
                 lista.RemoveAt(indeks);
             }
@@ -59,10 +60,7 @@ namespace AplikacjaPracownicy
         {
             foreach (Pracownik p in lista)
             {
-                if (p.Nazwisko.Equals(nazwisko))
-                {
-                    return p;
-                }
+                if (p.Nazwisko.Equals(nazwisko)) return p;
             }
             return null;
             //lista.Find(x => x.Nazwisko.Equals(nazwisko));
