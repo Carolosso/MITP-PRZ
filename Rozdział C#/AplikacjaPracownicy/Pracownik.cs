@@ -76,7 +76,6 @@ namespace AplikacjaPracownicy
         //override string ToString()
         public override string ToString()
         {
-            Pracownik p = new Pracownik();
            string format;
             format = String.Format("{0} {1} {2} {3} {4} {5} {6} {7}",
                 Imie, Nazwisko, dataUrodzenia.Dzien, dataUrodzenia.Miesiac, dataUrodzenia.Rok, adresZamieszkania.Ulica,
