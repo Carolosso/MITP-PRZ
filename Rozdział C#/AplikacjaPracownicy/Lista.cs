@@ -8,7 +8,8 @@ namespace AplikacjaPracownicy
 {
     public class Lista
     {
-        List<Pracownik> lista = new List<Pracownik>();
+        private List<Pracownik> lista = new List<Pracownik>();
+
         //publiczne właściwości
         public Pracownik this[int i]
         {
@@ -26,12 +27,12 @@ namespace AplikacjaPracownicy
         //void Dodaj(Pracownik pracownik) dodającą pracownika do listy pracowników.
         public void Dodaj(Pracownik pracownik)
         {
-            lista.Add(pracownik);
+            lista.Add(pracownik.Clone());
         }
         //void WstawWPolozenie(int indeks, Pracownik pracownik)
         public void WstawWPolozenie(int indeks, Pracownik pracownik)
         {
-            lista.Insert(indeks, pracownik);
+            lista.Insert(indeks, pracownik.Clone());
         }
         //int Usun(string nazwisko)
         public int Usun(string nazwisko)
