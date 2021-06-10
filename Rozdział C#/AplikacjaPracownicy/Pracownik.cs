@@ -131,7 +131,17 @@ namespace AplikacjaPracownicy
         //virtual void OdczytXml(DataRow dr)
         public virtual void OdczytXml(DataRow dr)
         {
-
+            this.imie = dr.ItemArray[0].ToString();
+            this.nazwisko = dr.ItemArray[1].ToString();
+            string[] data = dr.ItemArray[2].ToString().Split(' ');
+            this.dataUrodzenia.Dzien = Int32.Parse(data[0]);
+            this.dataUrodzenia.Miesiac = data[1];
+            this.dataUrodzenia.Rok = Int32.Parse(data[2]);
+            string[] adres = dr.ItemArray[2].ToString().Split(' ');
+            this.AdresZamieszkania.Ulica = adres[0];
+            this.AdresZamieszkania.NumerDomu = adres[1];
+            this.AdresZamieszkania.Miasto = adres[2];
         }
+
     }
 }
