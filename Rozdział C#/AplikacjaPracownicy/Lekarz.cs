@@ -92,7 +92,11 @@ namespace AplikacjaPracownicy
         //virtual void OdczytXml(DataRow dr)
         public virtual void OdczytXml(DataRow dr)
         {
-
+            Pracownik p = new Pracownik();
+            p.OdczytXml(dr);
+            string[] szczegoly = dr.ItemArray[4].ToString().Split('\t');
+            this.specjalizacja = szczegoly[0];
+            this.tytul = szczegoly[1];
         }
     }
 }
