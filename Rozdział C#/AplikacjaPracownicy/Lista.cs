@@ -9,7 +9,7 @@ namespace AplikacjaPracownicy
     public class Lista
     {
         private List<Pracownik> lista = new List<Pracownik>();
-
+        private FormatDanych df; //modyfikacja
         //publiczne właściwości
         public Pracownik this[int i]
         {
@@ -22,6 +22,7 @@ namespace AplikacjaPracownicy
         //bezargumentowy konstruktor domyslny
         public Lista()
         {
+             FormatDanych df = new FormatDanych();
              lista = new List<Pracownik>();
         }
         //void Dodaj(Pracownik pracownik) dodającą pracownika do listy pracowników.
@@ -82,7 +83,38 @@ namespace AplikacjaPracownicy
         //void OdczytConsole()
         public void OdczytConsole()
         {
+            //Pracownik p = new Pracownik();
+            //p.OdczytConsole();
+            //lista.Add(p);
             Pracownik p = new Pracownik();
+            Console.WriteLine("Podaj typ pracownika");
+            Console.WriteLine("i - informatyk");
+            Console.WriteLine("l - lekarz");
+            Console.WriteLine("n - nauczyciel");
+            char typ = char.Parse(Console.ReadLine());
+            switch (typ)
+            {
+                case 'i':
+                    {
+                        p = new Informatyk();
+                        break;
+                    }
+                case 'l':
+                    {
+                        p = new Lekarz();
+                        break;
+                    }
+                case 'n':
+                    {
+                        p = new Nauczyciel();
+                        break;
+                    }
+                default:
+                    {
+                        Console.WriteLine("Błędny wybór.");
+                        break;
+                    }
+            }
             p.OdczytConsole();
             lista.Add(p);
         }
@@ -90,6 +122,21 @@ namespace AplikacjaPracownicy
         public void Wyczysc()
         {
             lista.Clear();
+        }
+
+        //modyfikacja lista
+        public void OdczytXml()
+        {
+            lista = df.OdczytXml();
+        }
+        public void ZapisXml()
+        {
+            df.ZapisXml(lista);
+        }
+        public string SciezkaDoPliku
+        {
+            get { return df.Sciezka; }
+            set { df.Sciezka = value; }
         }
     }
 }
