@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 namespace AplikacjaPracownicy
 {
@@ -9,9 +9,9 @@ namespace AplikacjaPracownicy
             Data d1 = new Data();
             Adres a1 = new Adres();
             Pracownik p1 = new Pracownik();
-            Lista l1 = new Lista();
-            l1.OdczytConsole();
-            l1.ZapisConsole();
+            Lista l = new Lista();
+            l.OdczytConsole();
+            l.ZapisConsole();
         }
     }
 

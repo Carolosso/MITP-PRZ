@@ -75,7 +75,7 @@ namespace AplikacjaPracownicy
                     {
                         case "Informatyk":
                             {
-                                p = new Informatyk();
+                               p = new Informatyk();
                                 break;
                             }
                         case "Lekarz":
@@ -85,7 +85,7 @@ namespace AplikacjaPracownicy
                             }
                         case "Nauczyciel":
                             {
-                                p = new Nauczyciel();
+                               p = new Nauczyciel();
                                 break;
                             }
                     }

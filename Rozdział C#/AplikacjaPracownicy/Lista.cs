@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -101,7 +101,7 @@ namespace AplikacjaPracownicy
                     }
                 case 'l':
                     {
-                        p = new Lekarz();
+                       p = new Lekarz();
                         break;
                     }
                 case 'n':

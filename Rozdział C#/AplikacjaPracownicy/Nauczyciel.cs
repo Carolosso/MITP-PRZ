@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AplikacjaPracownicy
 {
-    class Nauczyciel
+    class Nauczyciel : Pracownik
     {
         private string przedmiot;
         private string tytul;
@@ -21,7 +21,7 @@ namespace AplikacjaPracownicy
             get { return tytul; }
             set { tytul = value; }
         }
-        public Zawody Zawod //override 
+        public override Zawody Zawod 
         {
             get { return Zawody.Nauczyciel; }
         }
@@ -46,14 +46,14 @@ namespace AplikacjaPracownicy
             tytul = nauczyciel.tytul;
         }
 
-        //???virtual ???Pracownik???? Clone()
-        public virtual Nauczyciel Clone()
+        //Pracownik Clone()
+        public override Pracownik Clone()
         {
             Nauczyciel n = new Nauczyciel();
             return n;
         }
-        // ???override??? string SzczegolyZawodu()
-        public virtual string SzczegolyZawodu()
+        // override string SzczegolyZawodu()
+        public override string SzczegolyZawodu()
         {
             string format;
             format = String.Format("{0}\t{1}",Przedmiot, Tytul);
@@ -68,29 +68,27 @@ namespace AplikacjaPracownicy
             format = String.Format("{0} {1} {2}", p.ToString(), Przedmiot, Tytul);
             return format;
         }
-        //???override??? string FormatWyjsciowy() 
-        public virtual string FormatWyjsciowy()
+        //override string FormatWyjsciowy() 
+        public override string FormatWyjsciowy()
         {
-            Pracownik p = new Pracownik();
-            return String.Format("{0} \nDane dodatkowe: {1} {2}", p.FormatWyjsciowy(), Przedmiot, Tytul);
+            return String.Format("{0} \nDane dodatkowe: {1} {2}", base.FormatWyjsciowy(), Przedmiot, Tytul);
         }
         //override void OdczytConsole()
-        public virtual void OdczytConsole()
+        public override void OdczytConsole()
         {
-            Pracownik p = new Pracownik();
-            p.OdczytConsole();
+            base.OdczytConsole();
             Console.WriteLine("Podaj przedmiot: "); this.Przedmiot = Console.ReadLine();
             Console.WriteLine("Podaj tytul: "); this.Tytul = Console.ReadLine();
         }
-        //ovveride void ZapisConsole()
-        public virtual void ZapisConsole()
+        //overide void ZapisConsole()
+        public override void ZapisConsole()
         {
             Pracownik p = new Pracownik();
             p.ZapisConsole();
             Console.WriteLine(FormatWyjsciowy());
         }
         //virtual void OdczytXml(DataRow dr)
-        public virtual void OdczytXml(DataRow dr)
+        public override void OdczytXml(DataRow dr)
         {
             Pracownik p = new Pracownik();
             p.OdczytXml(dr);

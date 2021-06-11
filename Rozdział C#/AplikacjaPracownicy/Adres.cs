@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,7 +30,7 @@ namespace AplikacjaPracownicy
         }
 
         // publiczne metody
-        //bezargumentowy konstruktor domyslny??
+        //bezargumentowy konstruktor domyslny
         public Adres() { }
         //konstruktor inicjalizujacy wszystkie pola składowe na podstawie odp dobranych arg
         public Adres(string ulica, string numerDomu, string miasto)

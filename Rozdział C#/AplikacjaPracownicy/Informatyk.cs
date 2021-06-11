@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AplikacjaPracownicy
 {
-    class Informatyk
+    class Informatyk : Pracownik
     {
         private string adresEmail;
         private string stronaInternetowa;
@@ -21,7 +21,7 @@ namespace AplikacjaPracownicy
             get { return stronaInternetowa; }
             set { stronaInternetowa = value; }
         }
-        public Zawody Zawod //override 
+        public override Zawody Zawod  
         {
             get { return Zawody.Informatyk; }
         }
@@ -32,13 +32,12 @@ namespace AplikacjaPracownicy
         }
         public Informatyk(string adresEmail, string stronaInternetowa, string imie, string nazwisko, Data dataUrodzenia, Adres adresZamieszkania)
         {
-            Pracownik p = new Pracownik();
             this.adresEmail = adresEmail;
             this.stronaInternetowa = stronaInternetowa;
-            p.Imie = imie;
-            p.Nazwisko = nazwisko;
-            p.DataUrodzenia = new Data(dataUrodzenia);
-            p.AdresZamieszkania = new Adres(adresZamieszkania);
+            base.Imie = imie;
+            base.Nazwisko = nazwisko;
+            base.DataUrodzenia = new Data(dataUrodzenia);
+            base.AdresZamieszkania = new Adres(adresZamieszkania);
         }
         public Informatyk(Informatyk informatyk)
         {
@@ -46,14 +45,14 @@ namespace AplikacjaPracownicy
             stronaInternetowa = informatyk.stronaInternetowa;
         }
 
-        //???virtual ???Pracownik???? Clone()
-        public virtual Informatyk Clone()
+        //Pracownik Clone()
+        public override Pracownik Clone()
         {
             Informatyk i = new Informatyk();
             return i;
         }
-       // ???override??? string SzczegolyZawodu()
-        public virtual string SzczegolyZawodu()
+       // string SzczegolyZawodu()
+        public override string SzczegolyZawodu()
         {
             string format;
             format = String.Format("{0}\t{1}", AdresEmail, StronaInternetowa);
@@ -68,29 +67,28 @@ namespace AplikacjaPracownicy
             format = String.Format("{0} {1} {2}", p.ToString(), AdresEmail, StronaInternetowa);
             return format;
         }
-        //???override??? string FormatWyjsciowy() 
-        public virtual string FormatWyjsciowy()
+         
+        public override string FormatWyjsciowy()
         {
-            Pracownik p = new Pracownik();
-            return String.Format("{0} \nDane dodatkowe:{1} {2}", p.FormatWyjsciowy(), AdresEmail, StronaInternetowa);
+            return String.Format("Zawód: {0}\n{1}Dane dodatkowe: {2}, {3}",
+            this.Zawod, base.FormatWyjsciowy(), adresEmail, stronaInternetowa);
+
         }
         //override void OdczytConsole()
-        public virtual void OdczytConsole()
+        public override void OdczytConsole()
         {
-            Pracownik p = new Pracownik();
-            p.OdczytConsole();
+            base.OdczytConsole();
             Console.WriteLine("Podaj adres email: "); this.AdresEmail = Console.ReadLine();
             Console.WriteLine("Podaj strone internetową: "); this.StronaInternetowa = Console.ReadLine();
         }
         //ovveride void ZapisConsole()
-        public virtual void ZapisConsole()
+        public override void ZapisConsole()
         {
-            Pracownik p = new Pracownik();
-            p.ZapisConsole();
+            base.ZapisConsole();
             Console.WriteLine(FormatWyjsciowy());
         }
         //virtual void OdczytXml(DataRow dr)
-        public virtual void OdczytXml(DataRow dr)
+        public override void OdczytXml(DataRow dr)
         {
             Pracownik p = new Pracownik();
             p.OdczytXml(dr);
