@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AplikacjaPracownicy
 {
-    class Lekarz
+    class Lekarz : Pracownik
     {
         private string specjalizacja;
         private string tytul;
@@ -21,7 +21,7 @@ namespace AplikacjaPracownicy
             get { return tytul; }
             set { tytul = value; }
         }
-        public Zawody Zawod //override 
+        public override Zawody Zawod 
         {
             get { return Zawody.Lekarz; }
         }
@@ -46,14 +46,14 @@ namespace AplikacjaPracownicy
             tytul = lekarz.tytul;
         }
 
-        //???virtual ???Pracownik???? Clone()
-        public virtual Lekarz Clone()
+        // Pracownik Clone()
+        public override Pracownik Clone()
         {
             Lekarz l = new Lekarz();
             return l;
         }
-        // ???override??? string SzczegolyZawodu()
-        public virtual string SzczegolyZawodu()
+        //  string SzczegolyZawodu()
+        public override string SzczegolyZawodu()
         {
             string format;
             format = String.Format("{0}\t{1}", Specjalizacja, Tytul);
@@ -68,29 +68,27 @@ namespace AplikacjaPracownicy
             format = String.Format("{0} {1} {2}", p.ToString(), Specjalizacja, Tytul);
             return format;
         }
-        //???override??? string FormatWyjsciowy() 
-        public virtual string FormatWyjsciowy()
+        // string FormatWyjsciowy() 
+        public override string FormatWyjsciowy()
         {
-            Pracownik p = new Pracownik();
-            return String.Format("{0} \nDane dodatkowe: {1} {2}", p.FormatWyjsciowy(), Specjalizacja, Tytul);
+            return String.Format("{0} \nDane dodatkowe: {1} {2}", base.FormatWyjsciowy(), Specjalizacja, Tytul);
         }
         //override void OdczytConsole()
-        public virtual void OdczytConsole()
+        public override void OdczytConsole()
         {
-            Pracownik p = new Pracownik();
-            p.OdczytConsole();
+            base.OdczytConsole();
             Console.WriteLine("Podaj specjalizacje: "); this.Specjalizacja = Console.ReadLine();
             Console.WriteLine("Podaj tytul: "); this.Tytul = Console.ReadLine();
         }
-        //ovveride void ZapisConsole()
-        public virtual void ZapisConsole()
+        //overide void ZapisConsole()
+        public override void ZapisConsole()
         {
             Pracownik p = new Pracownik();
             p.ZapisConsole();
             Console.WriteLine(FormatWyjsciowy());
         }
-        //virtual void OdczytXml(DataRow dr)
-        public virtual void OdczytXml(DataRow dr)
+        // void OdczytXml(DataRow dr)
+        public override void OdczytXml(DataRow dr)
         {
             Pracownik p = new Pracownik();
             p.OdczytXml(dr);
