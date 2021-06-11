@@ -9,8 +9,11 @@ namespace AplikacjaPracownicy
 {
     class Nauczyciel : Pracownik
     {
+        //prywatne pola
         private string przedmiot;
         private string tytul;
+        //publiczne właściwości
+
         public string Przedmiot
         {
             get { return przedmiot; }
@@ -25,11 +28,15 @@ namespace AplikacjaPracownicy
         {
             get { return Zawody.Nauczyciel; }
         }
+        // publiczne metody
+        //bezargumentowy konstruktor domyslny
         public Nauczyciel()
         {
             przedmiot = "000000000000";
             tytul = "0000000000000";
         }
+        //konstruktor inicjalizujacy wszystkie pola składowe na podstawie odp dobranych arg
+
         public Nauczyciel(string przedmiot, string tytul, string imie, string nazwisko, Data dataUrodzenia, Adres adresZamieszkania)
         {
             Pracownik p = new Pracownik();
@@ -40,6 +47,8 @@ namespace AplikacjaPracownicy
             p.DataUrodzenia = new Data(dataUrodzenia);
             p.AdresZamieszkania = new Adres(adresZamieszkania);
         }
+        //konstruktor kopiujacy(inicjalizujacy) wszystkie pola skladowe na pod arg wzorcowego
+
         public Nauczyciel(Nauczyciel nauczyciel)
         {
             przedmiot = nauczyciel.przedmiot;

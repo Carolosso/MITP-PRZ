@@ -11,6 +11,7 @@ namespace AplikacjaPracownicy
     {
         private string adresEmail;
         private string stronaInternetowa;
+        //publiczne właściwości
         public string AdresEmail
         {
             get { return adresEmail; }
@@ -25,11 +26,15 @@ namespace AplikacjaPracownicy
         {
             get { return Zawody.Informatyk; }
         }
-        public Informatyk()
+        // publiczne metody
+        //bezargumentowy konstruktor domyslny
+        public Informatyk() 
         {
             adresEmail = "000000000000";
             stronaInternetowa = "0000000000000";
         }
+        //konstruktor inicjalizujacy wszystkie pola składowe na podstawie odp dobranych arg
+
         public Informatyk(string adresEmail, string stronaInternetowa, string imie, string nazwisko, Data dataUrodzenia, Adres adresZamieszkania)
         {
             this.adresEmail = adresEmail;
@@ -39,6 +44,8 @@ namespace AplikacjaPracownicy
             base.DataUrodzenia = new Data(dataUrodzenia);
             base.AdresZamieszkania = new Adres(adresZamieszkania);
         }
+        //konstruktor kopiujacy(inicjalizujacy) wszystkie pola skladowe na pod arg wzorcowego
+
         public Informatyk(Informatyk informatyk)
         {
             adresEmail = informatyk.adresEmail;

@@ -17,7 +17,7 @@ namespace AplikacjaPracownicy
         }
         public int Rozmiar
         {
-            get { return lista.Capacity; }
+            get { return lista.Count(); }
         }
         //bezargumentowy konstruktor domyslny
         public Lista()
@@ -33,7 +33,11 @@ namespace AplikacjaPracownicy
         //void WstawWPolozenie(int indeks, Pracownik pracownik)
         public void WstawWPolozenie(int indeks, Pracownik pracownik)
         {
-            lista.Insert(indeks, pracownik.Clone());
+            if (indeks >= 0 && indeks < Rozmiar)
+            {
+                lista.Insert(indeks, pracownik.Clone());
+            }
+            else Console.WriteLine("Bledny indeks!");
         }
         //int Usun(string nazwisko)
         public int Usun(string nazwisko)
@@ -67,10 +71,10 @@ namespace AplikacjaPracownicy
             return null;
             //lista.Find(x => x.Nazwisko.Equals(nazwisko));
         }
-        //void Sortuj() s
-        public void Sortuj()
+        
+        public void Sortuj(IComparer<Pracownik> ic)
         {
-            lista.Sort();
+            lista.Sort(ic);
         }
         //void ZapisConsole() 
         public void ZapisConsole()
@@ -111,7 +115,7 @@ namespace AplikacjaPracownicy
                     }
                 default:
                     {
-                        Console.WriteLine("Błędny wybór.");
+                        p = new Pracownik();
                         break;
                     }
             }

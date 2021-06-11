@@ -9,7 +9,7 @@ namespace AplikacjaPracownicy
 {
     class FormatDanych
     {
-
+        //prywatne pola
         private string sciezka = Environment.GetFolderPath(Environment.SpecialFolder.Desktop); //na pulpit
         private DataSet ds;
         private DataTable dt;
